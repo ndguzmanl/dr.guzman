@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Nicolás Guzmán — Odontólogo en Concepción</title>
+<style>
+  :root {
+    --brand: #1F6F8B;
+    --brand-dark: #16505F;
+    --accent-bg: #EEF6F8;
+    --text-dark: #16232B;
+    --text-secondary: #445056;
+    --text-muted: #7C8A8F;
+    --warn: #C9743A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: #FFFFFF;
+  }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E7EDEE;
+  }
+  .nav-wrap { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; }
+  .logo { font-weight: 700; font-size: 20px; color: var(--brand-dark); letter-spacing: 0.3px; }
+  .logo span { color: var(--brand); }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav a { font-size: 15px; font-weight: 500; color: var(--text-secondary); }
+  nav a:hover { color: var(--brand); }
+  .cta-btn {
+    background: var(--brand); color: #fff; padding: 12px 26px; border-radius: 30px;
+    font-weight: 700; font-size: 15px; white-space: nowrap;
+  }
+  .cta-btn:hover { background: var(--brand-dark); }
+  .menu-toggle { display: none; font-size: 26px; background: none; border: none; cursor: pointer; color: var(--brand-dark); }
+
+  /* Hero */
+  .hero {
+    background: var(--accent-bg);
+    padding: 90px 0 80px;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
+  .hero h1 { font-size: 44px; font-weight: 700; line-height: 1.25; color: var(--brand-dark); margin-bottom: 22px; }
+  .hero p.lead { font-size: 19px; color: var(--text-secondary); margin-bottom: 32px; max-width: 520px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--brand); color: #fff; padding: 16px 32px; border-radius: 30px;
+    font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-secondary {
+    border: 2px solid var(--brand); color: var(--brand); padding: 14px 30px; border-radius: 30px;
+    font-weight: 700; font-size: 16px;
+  }
+  .btn-secondary:hover { background: var(--brand); color: #fff; }
+  .quote-card {
+    background: #fff; border-radius: 20px; padding: 34px; border-left: 6px solid var(--brand);
+    font-size: 19px; color: var(--text-dark); font-style: italic; box-shadow: 0 4px 20px rgba(22,80,95,0.06);
+  }
+  .quote-card .who { margin-top: 18px; font-style: normal; font-size: 14px; color: var(--text-muted); font-weight: 700; }
+
+  /* Section generic */
+  section { padding: 80px 0; }
+  .section-label { font-size: 14px; font-weight: 700; color: var(--brand); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+  h2 { font-size: 32px; font-weight: 700; color: var(--brand-dark); margin-bottom: 16px; }
+  .section-intro { color: var(--text-secondary); font-size: 17px; max-width: 680px; margin-bottom: 44px; }
+
+  /* Diferenciadores */
+  .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .diff-card { background: var(--accent-bg); border-radius: 18px; padding: 34px 28px; }
+  .diff-num { font-size: 15px; font-weight: 700; color: var(--brand); margin-bottom: 14px; }
+  .diff-card h3 { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+  .diff-card p { font-size: 15.5px; color: var(--text-secondary); }
+
+  /* Reseñas deslizables */
+  .reviews-bg { background: var(--accent-bg); }
+  .reviews-scroll {
+    display: flex; flex-direction: column; gap: 18px;
+    max-height: 520px; overflow-y: auto; padding-right: 10px;
+    scroll-snap-type: y proximity;
+  }
+  .reviews-scroll::-webkit-scrollbar { width: 6px; }
+  .reviews-scroll::-webkit-scrollbar-thumb { background: #C7DBE0; border-radius: 10px; }
+  .review-card {
+    background: #fff; border-radius: 16px; padding: 24px 28px; scroll-snap-align: start;
+    box-shadow: 0 2px 10px rgba(22,80,95,0.05);
+  }
+  .review-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .review-name { font-weight: 700; font-size: 15.5px; color: var(--text-dark); }
+  .review-stars { color: #E0A83A; font-size: 15px; letter-spacing: 1px; }
+  .review-text { font-size: 15.5px; color: var(--text-secondary); }
+  .review-reply { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #DCE6E8; font-size: 14px; color: var(--text-muted); }
+  .review-reply b { color: var(--brand-dark); }
+
+  /* Servicios */
+  .services-bg { background: var(--accent-bg); }
+  .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .price-card { background: #fff; border-radius: 16px; padding: 26px 28px; }
+  .price-card h4 { font-size: 17px; font-weight: 700; color: var(--brand-dark); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #E7EDEE; }
+  .price-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 15px; color: var(--text-secondary); }
+  .price-row b { color: var(--text-dark); font-weight: 600; }
+  .price-note { margin-top: 30px; font-size: 14px; color: var(--text-muted); text-align: center; }
+
+  /* Reputación */
+  .rep-wrap { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+  .rep-score { text-align: center; background: var(--accent-bg); border-radius: 20px; padding: 40px 50px; }
+  .rep-score .num { font-size: 56px; font-weight: 700; color: var(--brand-dark); }
+  .stars { color: #E0A83A; font-size: 22px; margin: 6px 0; }
+  .rep-score .count { font-size: 14px; color: var(--text-muted); }
+  .rep-text { flex: 1; min-width: 280px; }
+  .rep-text p { font-size: 17px; color: var(--text-secondary); }
+
+  /* Sobre mí */
+  .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 50px; align-items: center; }
+  .about-photo { background: var(--accent-bg); border-radius: 20px; aspect-ratio: 704/810; display: flex; align-items: center; justify-content: center; color: var(--brand); font-size: 15px; text-align: center; padding: 20px; }
+  .about-text p { color: var(--text-secondary); font-size: 16.5px; margin-bottom: 18px; }
+
+  /* Contacto */
+  .contact-bg { background: var(--brand-dark); color: #fff; }
+  .contact-bg h2 { color: #fff; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact-item { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+  .contact-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-item div p { color: #CFE3E9; font-size: 15px; }
+  .contact-item div .label { font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .map-placeholder { background: rgba(255,255,255,0.08); border-radius: 18px; min-height: 260px; display: flex; align-items: center; justify-content: center; color: #CFE3E9; font-size: 14px; text-align: center; padding: 20px; }
+
+  /* Footer */
+  footer { background: #0F3843; color: #B9CDD3; padding: 36px 0; font-size: 14px; }
+  .footer-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-wrap a { font-weight: 600; color: #fff; }
+
+  @media (max-width: 860px) {
+    nav, .cta-btn.desktop-only { display: none; }
+    .menu-toggle { display: block; }
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .diff-grid, .price-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    .rep-wrap { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap container">
+    <div class="logo">Dr. Nicolás Guzmán <span>· Odontólogo</span></div>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <nav>
+        <ul>
+          <li><a href="#diferenciadores">Por qué elegirnos</a></li>
+          <li><a href="#servicios">Servicios y precios</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex; align-items:center; gap:14px; flex-shrink:0;">
+        <a class="cta-btn desktop-only" href="https://wa.link/tu8qmu" target="_blank" rel="noopener" style="display:flex; align-items:center;">Agendar por WhatsApp</a>
+        <a href="https://www.instagram.com/ndguzmanl/" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; flex-shrink:0; border-radius:50%; border:2px solid var(--brand);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F6F8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="section-label">Odontología general en Concepción</div>
+      <h1>Acá de verdad te explico lo que tienes, y te lo resuelvo. Lo más importante: ayudo a que tu salud realmente mejore.</h1>
+      <p class="lead">Sin diagnósticos inflados, sin planes de tratamiento que abruman, sin presión de venta. Solo un problema real, explicado con claridad, y resuelto de verdad.</p>
+      <p style="font-size: 14px; color: var(--text-secondary, #667085); margin-bottom: 14px;">📍 Donde atiendo: Anibal Pinto 295, Edificio Buró, Of. 303</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar por WhatsApp →</a>
+        <a class="btn-secondary" href="#servicios">Ver precios</a>
+      </div>
+      <p style="margin-top: 14px; font-size: 15px; color: var(--text-secondary, #667085);">o agenda tu <a href="https://script.google.com/macros/s/AKfycbz04dZuJpn1As3Mz9svuf_VFxaHEOW-Lr58prZffDqwYEj_-GgOd2b_BQ8T6BTm8M4r/exec" target="_blank" rel="noopener" style="color: var(--brand); font-weight: 600; text-decoration: underline;">primera sesión online gratis vía Meet</a></p>
+      <a class="btn-secondary" href="https://forms.gle/D6DF2dsxE85NJ6ot6" target="_blank" rel="noopener" style="display: inline-block; margin-top: 14px; font-size: 14px; padding: 10px 18px;">¿Tu empresa / colegio no tiene convenio? Contacta acá</a>
+    </div>
+    <div class="quote-card">
+      “Mi misión es generar consciencia, evitar que sientan miedo, y lograr que mis pacientes estén más comprometidos con su salud.”
+      <div class="who">— Dr. Nicolás Guzmán</div>
+    </div>
+  </div>
+</section>
+
+<section id="diferenciadores">
+  <div class="container">
+    <div class="section-label">Por qué elegirnos</div>
+    <h2>Lo que me hace distinto</h2>
+    <p class="section-intro">No son frases de marketing — son las tres cosas que definen cada atención, desde el primer mensaje hasta el control posterior.</p>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <h3>Calidad desde el primer contacto</h3>
+        <p>La experiencia se cuida desde el momento en que agendas, no solo en el sillón.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <h3>Explicación activa, no pasiva</h3>
+        <p>No espero que preguntes — te explico cada paso antes de que ocurra, en lenguaje simple.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <h3>Seguimiento post-tratamiento real</h3>
+        <p>El acompañamiento sigue después de la atención: controlo tu evolución, no desaparezco una vez cobrado el servicio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reseñas" class="reviews-bg">
+  <div class="container">
+    <div class="section-label">Reputación</div>
+    <h2>Lo que dicen mis pacientes</h2>
+    <div class="rep-wrap" style="margin-bottom: 40px;">
+      <div class="rep-text">
+        <p>Cada reseña se responde personalmente, sin plantillas — igual que cada paciente se atiende como un caso único, no como un número más en la agenda. Desliza para leerlas todas.</p>
+      </div>
+    </div>
+
+    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-af8e9bd2-dd79-4c9c-8332-ec306bde9520" data-elfsight-app-lazy></div>
+  </div>
+</section>
+
+<section id="servicios" class="services-bg">
+  <div class="container">
+    <div class="section-label">Servicios</div>
+    <h2>Tratamientos y precios</h2>
+    <p class="section-intro">Precios claros desde antes de agendar. Todo presupuesto se entrega por escrito antes de cualquier tratamiento.</p>
+    <div class="price-grid">
+      <div class="price-card">
+        <h4>Consulta y urgencias</h4>
+        <div class="price-row"><span>Consulta y diagnóstico inicial</span><b>$25.000</b></div>
+        <div class="price-row"><span>Trepanación de urgencia</span><b>$35.000</b></div>
+      </div>
+      <div class="price-card">
+        <h4>Prevención</h4>
+        <div class="price-row"><span>Destartraje / profilaxis</span><b>$30.000</b></div>
+      </div>
+      <div class="price-card">
+        <h4>Restauradora (resinas e incrustaciones)</h4>
+        <div class="price-row"><span>Resina simple</span><b>$35.000</b></div>
+        <div class="price-row"><span>Resina compuesta</span><b>$40.000</b></div>
+        <div class="price-row"><span>Resina reforzada con fibras</span><b>$90.000</b></div>
+        <div class="price-row"><span>Incrustación</span><b>$150.000–180.000</b></div>
+      </div>
+      <div class="price-card">
+        <h4>Cirugía</h4>
+        <div class="price-row"><span>Exodoncia simple</span><b>$30.000</b></div>
+        <div class="price-row"><span>Exodoncia incluida (compleja)</span><b>$60.000</b></div>
+      </div>
+      <div class="price-card">
+        <h4>Endodoncia</h4>
+        <div class="price-row"><span>Endodoncia premolar</span><b>$100.000</b></div>
+        <div class="price-row"><span>Endodoncia molar</span><b>$120.000</b></div>
+      </div>
+      <div class="price-card">
+        <h4>Prótesis y estética</h4>
+        <div class="price-row"><span>Corona zirconio</span><b>$260.000</b></div>
+        <div class="price-row"><span>Corona ceramage</span><b>$200.000</b></div>
+        <div class="price-row"><span>Corona disilicato</span><b>$275.000</b></div>
+        <div class="price-row"><span>Corona feldespato</span><b>$260.000</b></div>
+        <div class="price-row"><span>PPR metálica</span><b>$250.000</b></div>
+        <div class="price-row"><span>PPR acrílica</span><b>$200.000</b></div>
+        <div class="price-row"><span>Blanqueamiento en sillón (por sesión)</span><b>$50.000</b></div>
+      </div>
+    </div>
+    <p class="price-note">Medios de pago: débito, crédito, transferencia y efectivo. Consulta por planes de cuotas con tu banco o tarjeta.</p>
+  </div>
+</section>
+
+<section id="sobre-mi" class="services-bg">
+  <div class="container about-grid">
+    <div class="about-photo"><img src="dr-nicolas-consulta-2.jpg" alt="Dr. Nicolás Guzmán atendiendo a un paciente en consulta" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px; display: block;"></div>
+    <div class="about-text">
+      <div class="section-label">Sobre mí</div>
+      <h2>Dr. Nicolás Guzmán</h2>
+      <p>Cirujano dentista con consulta propia en Concepción. Atiendo desde diagnóstico y urgencias hasta tratamientos de mayor complejidad — endodoncia, prótesis, estética — con un mismo criterio: que entiendas tu diagnóstico y tus alternativas antes de decidir, sin presión de venta.</p>
+      <p>Combato tres vicios instalados en la industria: precios inflados sin relación con el valor entregado, diagnósticos exagerados diseñados para vender, y planes de tratamiento sobredimensionados que terminan por hacer que la gente abandone el cuidado de su salud bucal.</p>
+      <p>Trabajo con presupuestos claros entregados por escrito, agendamiento directo por WhatsApp, y seguimiento real de cada paciente después del tratamiento.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact-bg">
+  <div class="container">
+    <div class="section-label" style="color:#8FC7D6;">Contacto</div>
+    <h2>Agenda tu hora</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="label">WhatsApp</div>
+            <p>Respuesta directa, sin intermediarios — escríbenos y te confirmamos disponibilidad real.</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="label">Ubicación</div>
+            <p>Anibal Pinto 295, Edificio Buró, Of. 303, Concepción, Chile</p>
+            <p><a href="https://maps.app.goo.gl/ohRN3jX5GSow3bMN6" target="_blank" rel="noopener" style="color:#8FC7D6; font-weight:600; text-decoration:underline;">Ver en Google Maps →</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="label">Horario</div>
+            <p>Consulta disponibilidad por WhatsApp — horario flexible según agenda.</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:14px; margin-top:10px; flex-wrap:wrap;">
+          <a class="btn-primary" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+          <a href="https://www.instagram.com/ndguzmanl/" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:50%; border:2px solid #fff;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </div>
+      </div>
+      <a class="map-placeholder" href="https://maps.app.goo.gl/ohRN3jX5GSow3bMN6" target="_blank" rel="noopener" style="display:flex;">📍 Anibal Pinto 295, Edificio Buró, Of. 303<br>Ver ubicación en Google Maps →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-wrap">
+    <div>© 2026 Dr. Nicolás Guzmán — Odontólogo, Concepción</div>
+    <a href="https://www.instagram.com/ndguzmanl/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+</body>
+</html>
