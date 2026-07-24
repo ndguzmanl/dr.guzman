@@ -74,6 +74,23 @@
   h2 { font-size: 32px; font-weight: 700; color: var(--brand-dark); margin-bottom: 16px; }
   .section-intro { color: var(--text-secondary); font-size: 17px; max-width: 680px; margin-bottom: 44px; }
 
+  /* Quiz autodiagnóstico */
+  .quiz-bg { background: var(--accent-bg); }
+  .quiz-card { background: #fff; border-radius: 20px; padding: 36px 32px; max-width: 480px; margin: 0 auto; box-shadow: 0 4px 20px rgba(22,80,95,0.06); }
+  .quiz-step-label { font-size: 13px; font-weight: 700; color: var(--brand); margin-bottom: 8px; }
+  .quiz-progress { height: 4px; background: var(--accent-bg); border-radius: 4px; margin-bottom: 20px; overflow: hidden; }
+  .quiz-progress-bar { height: 100%; background: var(--brand); transition: width .3s; }
+  .quiz-question { font-size: 19px; font-weight: 700; color: var(--text-dark); margin-bottom: 18px; }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+  .quiz-option { text-align: left; padding: 15px 18px; border-radius: 12px; border: 2px solid #E7EDEE; background: #fff; cursor: pointer; font-size: 15.5px; color: var(--text-dark); font-family: inherit; transition: border-color .15s; }
+  .quiz-option:hover { border-color: var(--brand); }
+  .quiz-result-title { font-size: 13px; font-weight: 700; color: var(--brand); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .quiz-result-heading { font-size: 22px; font-weight: 700; color: var(--brand-dark); margin-bottom: 14px; }
+  .quiz-tips { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; }
+  .quiz-tips li { font-size: 15px; color: var(--text-secondary); line-height: 1.55; }
+  .quiz-cta-line { font-size: 16px; color: var(--text-dark); margin-bottom: 16px; }
+  .quiz-restart { margin-top: 16px; width: 100%; background: none; border: none; color: var(--text-muted); font-size: 14px; cursor: pointer; text-decoration: underline; font-family: inherit; }
+
   /* Diferenciadores */
   .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
   .diff-card { background: var(--accent-bg); border-radius: 18px; padding: 34px 28px; }
@@ -158,6 +175,7 @@
     <div style="display:flex; align-items:center; gap:28px;">
       <nav>
         <ul>
+          <li><a href="#quiz">Autodiagnóstico</a></li>
           <li><a href="#diferenciadores">Por qué elegirnos</a></li>
           <li><a href="#servicios">Servicios y precios</a></li>
           <li><a href="#reseñas">Reseñas</a></li>
@@ -189,12 +207,146 @@
       <p style="margin-top: 14px; font-size: 15px; color: var(--text-secondary, #667085);">o agenda tu <a href="https://script.google.com/macros/s/AKfycbz04dZuJpn1As3Mz9svuf_VFxaHEOW-Lr58prZffDqwYEj_-GgOd2b_BQ8T6BTm8M4r/exec" target="_blank" rel="noopener" style="color: var(--brand); font-weight: 600; text-decoration: underline;">primera sesión online gratis vía Meet</a></p>
       <a class="btn-secondary" href="https://forms.gle/D6DF2dsxE85NJ6ot6" target="_blank" rel="noopener" style="display: inline-block; margin-top: 14px; font-size: 14px; padding: 10px 18px;">¿Tu empresa / colegio no tiene convenio? Contacta acá</a>
     </div>
-    <div class="quote-card">
-      “Mi misión es generar consciencia, evitar que sientan miedo, y lograr que mis pacientes estén más comprometidos con su salud.”
-      <div class="who">— Dr. Nicolás Guzmán</div>
+    <div id="quiz">
+      <div class="section-label" style="margin-bottom: 10px;">Te ayudo fácil, con un clic</div>
+      <div class="quiz-card" id="quiz-wrap" style="max-width: none; padding: 28px 26px; margin-bottom: 24px;"></div>
+      <div class="quote-card">
+        “Mi misión es generar consciencia, evitar que sientan miedo, y lograr que mis pacientes estén más comprometidos con su salud.”
+        <div class="who">— Dr. Nicolás Guzmán</div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  var brand = "#1F6F8B";
+  var wrap = document.getElementById("quiz-wrap");
+
+  var questions = [
+    {
+      key: "motivo",
+      text: "¿Qué te trae por acá hoy?",
+      options: [
+        { label: "Tengo dolor o una urgencia", value: "dolor" },
+        { label: "Quiero mejorar mi sonrisa (dientes más blancos, forma)", value: "estetica" },
+        { label: "Necesito un chequeo o limpieza — hace mucho que no voy", value: "rutina" },
+        { label: "Me preocupan mis encías", value: "encias" }
+      ]
+    },
+    {
+      key: "tiempo",
+      text: "¿Hace cuánto tienes esto en mente o sintiéndolo?",
+      options: [
+        { label: "Desde hoy o ayer", value: "hoy" },
+        { label: "Hace unos días", value: "dias" },
+        { label: "Hace semanas o más", value: "semanas" }
+      ]
+    }
+  ];
+
+  var motivoLabel = {
+    dolor: "Dolor o urgencia",
+    estetica: "Mejorar su sonrisa",
+    rutina: "Chequeo o limpieza",
+    encias: "Le preocupan sus encías"
+  };
+  var tiempoLabel = {
+    hoy: "desde hoy o ayer",
+    dias: "hace unos días",
+    semanas: "hace semanas o más"
+  };
+
+  var results = {
+    dolor: {
+      title: "Mientras coordinamos tu hora",
+      tips: [
+        "Evita masticar del lado donde sientes la molestia.",
+        "No apliques calor directo sobre la zona (empeora la inflamación).",
+        "Si el dolor es fuerte, puedes tomar el analgésico que sueles usar mientras confirmamos disponibilidad."
+      ]
+    },
+    estetica: {
+      title: "Antes de pensar en blanquear",
+      tips: [
+        "Lo ideal es partir con una limpieza profesional — el resultado del blanqueamiento dura más así.",
+        "Evita blanqueadores caseros sin supervisión, pueden dañar el esmalte.",
+        "Cuéntame qué buscas exactamente (color, forma, o ambas) y te oriento mejor por WhatsApp."
+      ]
+    },
+    rutina: {
+      title: "Aunque no sientas nada raro",
+      tips: [
+        "Si ha pasado más de un año desde tu último control, vale la pena revisar igual.",
+        "Muchas caries iniciales no duelen — se detectan solo con revisión.",
+        "Una limpieza a tiempo suele evitar tratamientos más grandes después."
+      ]
+    },
+    encias: {
+      title: "Señales que vale la pena revisar",
+      tips: [
+        "Sangrado al cepillarte o usar hilo dental es una señal temprana, no algo normal.",
+        "El mal aliento persistente también puede venir de las encías.",
+        "Tratado a tiempo es simple — dejado pasar, empeora."
+      ]
+    }
+  };
+
+  var answers = {};
+  var step = 0;
+
+  function render() {
+    if (step >= questions.length) {
+      showResult();
+      return;
+    }
+    var q = questions[step];
+    var html = '<div class="quiz-step-label">Pregunta ' + (step + 1) + ' de ' + questions.length + '</div>';
+    html += '<div class="quiz-progress"><div class="quiz-progress-bar" style="width:' + ((step / questions.length) * 100) + '%;"></div></div>';
+    html += '<div class="quiz-question">' + q.text + '</div>';
+    html += '<div class="quiz-options">';
+    q.options.forEach(function (o) {
+      html += '<button class="quiz-option" data-val="' + o.value + '">' + o.label + '</button>';
+    });
+    html += '</div>';
+    wrap.innerHTML = html;
+
+    wrap.querySelectorAll(".quiz-option").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        answers[q.key] = btn.getAttribute("data-val");
+        step++;
+        render();
+      });
+    });
+  }
+
+  function showResult() {
+    var r = results[answers.motivo] || results.rutina;
+    var waBase = "https://wa.link/tu8qmu";
+    var msg = "Hola, hice el autodiagnóstico en la web.\nMotivo: " + (motivoLabel[answers.motivo] || "") + "\nHace: " + (tiempoLabel[answers.tiempo] || "");
+    var waUrl = waBase + "?text=" + encodeURIComponent(msg);
+
+    var html = '<div class="quiz-result-title">' + r.title + '</div>';
+    html += '<ul class="quiz-tips">';
+    r.tips.forEach(function (t) {
+      html += '<li>' + t + '</li>';
+    });
+    html += '</ul>';
+    html += '<div class="quiz-cta-line">Me pondré en contacto directo contigo. Dale clic acá:</div>';
+    html += '<a class="btn-primary" href="' + waUrl + '" target="_blank" rel="noopener" style="display:flex; justify-content:center; width:100%;">Hablar por WhatsApp conmigo →</a>';
+    html += '<button class="quiz-restart" id="quiz-restart">Volver a empezar</button>';
+    wrap.innerHTML = html;
+
+    document.getElementById("quiz-restart").addEventListener("click", function () {
+      step = 0;
+      answers = {};
+      render();
+    });
+  }
+
+  render();
+})();
+</script>
 
 <section id="diferenciadores">
   <div class="container">
