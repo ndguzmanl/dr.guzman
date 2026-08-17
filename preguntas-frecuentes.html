@@ -96,10 +96,11 @@ transition: border-color 0.2s, background 0.2s;
 .service-btn.active .arrow { transform: rotate(90deg); }
 
 .service-detail {
-display: none; margin-top: 18px; border: 1px solid var(--border); border-radius: 14px;
+display: block; margin-top: 18px; border: 1px solid var(--border); border-radius: 14px;
 padding: 28px 26px; background: #fff;
 }
-.service-detail.open { display: block; }
+.service-detail:not(.open) { display: none; }
+.service-detail:first-of-type { margin-top: 18px; }
 .service-detail h3 { color: var(--brand-dark); font-size: 21px; margin: 0 0 12px; }
 .service-detail .lead { color: var(--text-secondary); font-size: 15.5px; margin-bottom: 22px; }
 .service-detail .book-btn {
@@ -124,6 +125,8 @@ padding: 12px 24px; border-radius: 30px; font-weight: 600; font-size: 14.5px; ma
 
 footer.f { padding: 26px 0; text-align: center; color: var(--text-muted); font-size: 13px; }
 footer.f a { color: var(--brand); }
+
+noscript .service-detail { display: block !important; }
 
 @media (max-width: 600px) {
 .hero-faq h1 { font-size: 26px; }
@@ -152,7 +155,68 @@ footer.f a { color: var(--brand); }
 <div class="container">
 <h2 class="section-title">Las 10 preguntas más frecuentes</h2>
 <p class="section-sub">Lo que casi todos los pacientes preguntan antes de su primera hora.</p>
-<div class="faq-list" id="general-faq-list"></div>
+<div class="faq-list" id="general-faq-list">
+<div class="faq-item">
+<button class="faq-q" data-idx="0">
+<span>¿Cómo agendo una hora?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Puedes escribir directo por WhatsApp al +56 9 7290 2967, o reservar primero una sesión online gratuita por Meet para resolver dudas antes de decidir. No necesitas interconsulta ni derivación previa.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="1">
+<span>¿Cuánto cuesta la consulta y hay costos ocultos?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>La consulta y diagnóstico inicial tiene un valor fijo de $25.000. Todo presupuesto se entrega por escrito antes de iniciar cualquier tratamiento, así sabes el costo total antes de decidir.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="2">
+<span>¿Duele el tratamiento dental?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>La mayoría de los procedimientos se realizan con anestesia local y son indoloros durante la atención. La molestia posterior, si existe, se controla con analgésicos comunes; se te explica qué esperar antes de empezar cada tratamiento.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="3">
+<span>¿Qué pasa en mi primera consulta?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Se revisa tu historial, se examina tu boca y, si es necesario, se toman radiografías. Con esa información se conversa contigo sobre el diagnóstico y las alternativas, sin presión para decidir en el momento.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="4">
+<span>¿Atienden urgencias el mismo día?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Sí. El dolor agudo, los golpes y las infecciones se priorizan y se atienden con la mayor brevedad posible dentro del horario de atención (lunes a viernes 8:00–21:00, sábado 9:00–17:00).</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="5">
+<span>¿Qué medios de pago aceptan?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Débito, crédito, transferencia y efectivo. Puedes consultar por planes de cuotas directamente con tu banco o tarjeta.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="6">
+<span>Tengo miedo al dentista, ¿qué hacen para ayudarme?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Se explica cada paso antes de que ocurra, en lenguaje simple, y puedes pedir pausar el procedimiento en cualquier momento. La comunicación abierta reduce la ansiedad asociada a la atención dental.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="7">
+<span>¿Cada cuánto debo hacerme un control?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Se recomienda un control y limpieza cada 6 meses para prevenir caries y enfermedad de las encías, incluso si no tienes molestias — la mayoría de las enfermedades bucales son prevenibles con controles regulares.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="8">
+<span>¿Necesito un especialista o el dentista general puede tratarme?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Un cirujano dentista general está capacitado para realizar la gran mayoría de los tratamientos, incluida endodoncia, cirugía simple y prótesis. Solo se deriva a especialista en casos de mayor complejidad.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-idx="9">
+<span>¿Qué hago si se me cae o quiebra un diente por un golpe?</span><span class="icon">+</span>
+</button>
+<div class="faq-a"><p>Es una urgencia: contacta de inmediato por WhatsApp. Si es un diente permanente completo, consérvalo en leche o saliva (nunca seco) y acude lo antes posible — el tiempo es clave para poder reimplantarlo con éxito.</p></div>
+</div>
+</div>
 </div>
 </section>
 
@@ -160,8 +224,306 @@ footer.f a { color: var(--brand); }
 <div class="container">
 <h2 class="section-title">Tratamientos: en qué consisten</h2>
 <p class="section-sub">Elige un tratamiento para ver la explicación en lenguaje simple, sus preguntas frecuentes específicas y las referencias que respaldan cada respuesta.</p>
-<div class="service-grid" id="service-buttons"></div>
-<div id="service-details"></div>
+<div class="service-grid" id="service-buttons">
+<button class="service-btn" data-target="consulta"><span>Consulta y urgencias</span><span class="arrow">›</span></button>
+<button class="service-btn" data-target="prevencion"><span>Destartraje y profilaxis</span><span class="arrow">›</span></button>
+<button class="service-btn" data-target="resinas"><span>Resinas (restauraciones)</span><span class="arrow">›</span></button>
+<button class="service-btn" data-target="endodoncia"><span>Endodoncia (tratamiento de conducto)</span><span class="arrow">›</span></button>
+<button class="service-btn" data-target="exodoncia"><span>Exodoncia (extracciones)</span><span class="arrow">›</span></button>
+<button class="service-btn" data-target="protesis"><span>Coronas y prótesis</span><span class="arrow">›</span></button>
+<button class="service-btn" data-target="blanqueamiento"><span>Blanqueamiento dental</span><span class="arrow">›</span></button>
+<button class="service-btn" data-target="embarazo"><span>Embarazo y odontología</span><span class="arrow">›</span></button>
+</div>
+<div id="service-details">
+<div class="service-detail" id="detail-consulta">
+<h3>Consulta y urgencias</h3>
+<p class="lead">La consulta inicial incluye examen clínico, diagnóstico y, si corresponde, radiografías. Las urgencias (dolor agudo, trepanación, infecciones) se priorizan y se atienden lo antes posible dentro del horario de atención — no necesitas esperar semanas para ser visto cuando duele.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar consulta y urgencias por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre consulta y urgencias</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="consulta-0"><span>¿Qué incluye la consulta de $25.000?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Examen clínico completo, diagnóstico y un plan de tratamiento explicado y presupuestado por escrito antes de decidir cualquier procedimiento.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="consulta-1"><span>¿Puedo llegar sin cita por una urgencia?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Lo ideal es escribir primero por WhatsApp para coordinar el horario más cercano disponible; las urgencias se priorizan sobre atenciones programadas.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="consulta-2"><span>¿Qué es una trepanación de urgencia?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Es un procedimiento para aliviar el dolor agudo de un diente con inflamación o infección del nervio, abriendo el diente para drenar la presión mientras se define el tratamiento definitivo.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="consulta-3"><span>¿Necesito radiografías en la primera visita?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Solo si el diagnóstico lo requiere. Se te explica por qué son necesarias antes de tomarlas, no son un cobro automático.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="consulta-4"><span>¿Qué pasa si mi problema requiere un especialista?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Se te deriva de forma transparente, explicando por qué, y se coordina el seguimiento para que no pierdas continuidad en tu tratamiento.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="https://www.who.int/es/news-room/fact-sheets/detail/oral-health" target="_blank" rel="noopener">OMS — Salud bucodental (ficha descriptiva, actualizada 2024)</a></li>
+<li><a href="https://www.who.int/news/item/25-11-2024-the-first-ever-global-oral-health-conference-highlights-universal-health-coverage-by-2030" target="_blank" rel="noopener">OMS — Declaración de Bangkok: No Health Without Oral Health (nov. 2024)</a></li>
+<li><a href="https://www.mouthhealthy.org/dental-care/questions-about-going-to-the-dentist" target="_blank" rel="noopener">ADA MouthHealthy — Common Questions About Going to the Dentist (consultado 2025)</a></li>
+<li><a href="https://diprece.minsal.cl/programas-de-salud/salud-bucal/informacion-al-profesional-salud-bucal/" target="_blank" rel="noopener">MINSAL / DIPRECE — Programa de Salud Bucal, información al profesional (vigente, consultado 2025)</a></li>
+<li><a href="https://www.colegiodentistas.cl/" target="_blank" rel="noopener">Colegio de Cirujanas y Cirujanos Dentistas de Chile A.G. (consultado 2025)</a></li>
+</ul>
+</div>
+<div class="service-detail" id="detail-prevencion">
+<h3>Destartraje y profilaxis</h3>
+<p class="lead">Es la limpieza profesional que remueve el sarro (placa bacteriana calcificada) que el cepillado no elimina, principalmente bajo el borde de la encía. Es la base de la prevención: sin ella, la inflamación de encías puede avanzar hacia enfermedad periodontal y pérdida ósea.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar destartraje y profilaxis por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre destartraje y profilaxis</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="prevencion-0"><span>¿El destartraje daña el esmalte?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>No. El instrumental profesional remueve solo el sarro adherido, sin afectar el esmalte sano. Puede generar sensibilidad temporal en dientes con encías retraídas.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="prevencion-1"><span>¿Por qué me sangran las encías al limpiarme?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>El sangrado indica gingivitis (inflamación por placa bacteriana), no que el destartraje sea agresivo. Con limpieza profesional e higiene diaria, el sangrado disminuye en pocas semanas.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="prevencion-2"><span>¿Cada cuánto debo hacerme profilaxis?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Cada 6 meses en general; con más frecuencia si tienes antecedentes de enfermedad periodontal, eres fumador o tienes diabetes, condiciones que aumentan el riesgo.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="prevencion-3"><span>¿Es lo mismo destartraje que blanqueamiento?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>No. El destartraje remueve sarro y placa (salud), el blanqueamiento aclara el color del diente (estética). Muchas veces la limpieza ya mejora el aspecto al remover manchas superficiales.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="prevencion-4"><span>¿Qué pasa si nunca me hago destartraje?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>El sarro acumulado favorece la inflamación crónica de la encía, que puede progresar a periodontitis: pérdida de hueso y, eventualmente, movilidad o pérdida de dientes.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="https://www.who.int/es/news-room/fact-sheets/detail/oral-health" target="_blank" rel="noopener">OMS — Salud bucodental, prevención de enfermedad periodontal (actualizado 2024)</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12517237/" target="_blank" rel="noopener">PMC — "Gingivitis: The Past, the Present, the Future" (2025)</a></li>
+<li><a href="https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/guias-clinicas-no-ges/guias-clinicas-no-ges-salud-bucal/salud-oral-en-adolescentes-de-10-19-anos-prevencion-diagnostico-y-tratamiento-de-la-enfermedad-periodontal/" target="_blank" rel="noopener">MINSAL / DIPRECE — Guía de prevención, diagnóstico y tratamiento de enfermedad periodontal (vigente, consultado 2025)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/gum-disease" target="_blank" rel="noopener">ADA MouthHealthy — Gum Disease (consultado 2025)</a></li>
+<li><a href="https://cdn.who.int/media/docs/default-source/ncds/mnd/oral-health/eb152-draft-global-oral-health-action-plan-2023-2030-en.pdf" target="_blank" rel="noopener">OMS — Global Oral Health Action Plan 2023–2030, objetivo de prevención periodontal (vigente 2024–2025)</a></li>
+</ul>
+</div>
+<div class="service-detail" id="detail-resinas">
+<h3>Resinas (restauraciones)</h3>
+<p class="lead">Las resinas son "tapaduras" del color del diente que reparan caries o fracturas pequeñas a moderadas. A diferencia de las antiguas amalgamas metálicas, se adhieren al diente y son estéticas; el tipo (simple, compuesta o reforzada con fibras) depende del tamaño y ubicación del daño.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar resinas (restauraciones) por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre resinas (restauraciones)</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="resinas-0"><span>¿La resina dura para siempre?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>No, tiene una vida útil (en general varios años) que depende de la higiene, el bruxismo y la ubicación. Se revisa en cada control para detectar desgaste o filtración a tiempo.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="resinas-1"><span>¿Duele hacerse una resina?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Se realiza con anestesia local; durante el procedimiento no debieras sentir dolor. Puede haber sensibilidad leve al frío/calor por algunos días, especialmente en caries profundas.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="resinas-2"><span>¿Qué diferencia hay entre resina simple y compuesta?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>La resina simple cubre un daño acotado en una cara del diente; la compuesta abarca más superficies o mayor profundidad, por lo que requiere más tiempo clínico y material.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="resinas-3"><span>¿Cuándo se necesita una resina reforzada con fibras o una incrustación en vez de resina normal?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Cuando el diente perdió gran parte de su estructura: ahí la resina simple no da suficiente resistencia y se necesita más refuerzo o una restauración indirecta (incrustación) para evitar que el diente se fracture.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="resinas-4"><span>¿Puedo comer normal después de una resina?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Sí, la resina endurece con luz en el momento (a diferencia de la amalgama antigua) y puedes comer apenas pase el efecto de la anestesia, evitando alimentos muy duros el primer día si hubo anestesia profunda.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/composite-fillings" target="_blank" rel="noopener">ADA MouthHealthy — Composite Fillings (actualizado agosto 2024)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/dental-filling-options" target="_blank" rel="noopener">ADA MouthHealthy — Dental Filling Options (actualizado agosto 2024)</a></li>
+<li><a href="https://www.ada.org/resources/ada-library/oral-health-topics/materials-for-direct-restorations" target="_blank" rel="noopener">ADA — Materials for Direct Restorations, Oral Health Topics (consultado 2025)</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12611795/" target="_blank" rel="noopener">PMC — "Natural Silica and Plant-Derived Fillers for Dental Composite Resins: A Narrative Review" (2025)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/fillings-tooth-colored/" target="_blank" rel="noopener">ADA MouthHealthy — Fillings (Tooth-Colored) (consultado 2025)</a></li>
+</ul>
+</div>
+<div class="service-detail" id="detail-endodoncia">
+<h3>Endodoncia (tratamiento de conducto)</h3>
+<p class="lead">Es el tratamiento del nervio (pulpa) cuando está dañado o infectado por caries profunda, trauma o grietas. Se limpia y sella el interior del diente para eliminar el dolor y la infección, conservando el diente en boca en vez de extraerlo.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar endodoncia (tratamiento de conducto) por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre endodoncia (tratamiento de conducto)</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="endodoncia-0"><span>¿Perderé mi diente si me hago una endodoncia?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>No: la endodoncia existe precisamente para salvar el diente evitando su extracción. El diente queda sin nervio pero funcional; con una restauración adecuada (resina o corona) puede durar muchos años.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="endodoncia-1"><span>¿Es muy doloroso el tratamiento?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Es uno de los mitos más comunes. Con anestesia adecuada el procedimiento en sí no duele; de hecho, la endodoncia elimina el dolor que causaba la infección o inflamación del nervio.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="endodoncia-2"><span>¿Cuántas sesiones se necesitan?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Depende de la complejidad: dientes con conductos simples (premolares) suelen resolverse en 1–2 sesiones; molares con conductos más complejos pueden requerir 2 o más.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="endodoncia-3"><span>¿El diente tratado necesita corona después?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>En molares y premolares muy debilitados, sí se recomienda una corona para protegerlo de fracturas, ya que el diente pierde parte de su resistencia natural al perder el nervio y estructura.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="endodoncia-4"><span>¿Qué pasa si no me trato un diente con el nervio dañado?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>La infección puede progresar, formar un absceso, causar dolor agudo y comprometer el hueso alrededor de la raíz, llegando a requerir la extracción del diente.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="https://www.socendochile.cl/faqs.php" target="_blank" rel="noopener">Sociedad de Endodoncia de Chile — Preguntas frecuentes sobre endodoncia (consultado 2025)</a></li>
+<li><a href="https://www.saludtarapaca.gob.cl/wp-content/uploads/2025/11/PROTOCOLO-ENDODONCIA.pdf" target="_blank" rel="noopener">Servicio de Salud Tarapacá / MINSAL — Protocolo de Endodoncia (res. 2025)</a></li>
+<li><a href="https://www.aae.org/patients/root-canal-treatment/" target="_blank" rel="noopener">American Association of Endodontists (AAE) — Root Canal Treatment, información para pacientes (consultado 2025)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z" target="_blank" rel="noopener">ADA MouthHealthy — Endodontics / Root Canals (consultado 2025)</a></li>
+<li><a href="https://www.redsalud.cl/blog/salud-dental/endodoncia-cuando-es-necesario-un-tratamiento-de-conducto" target="_blank" rel="noopener">RedSalud — Endodoncia: todo lo que debes saber sobre el tratamiento de conducto (consultado 2025)</a></li>
+</ul>
+</div>
+<div class="service-detail" id="detail-exodoncia">
+<h3>Exodoncia (extracciones)</h3>
+<p class="lead">Es la extracción de un diente que no puede conservarse (por daño extenso, infección, fractura o indicación ortodóncica) o de un tercer molar ("muela del juicio") mal posicionado. Se distingue entre exodoncia simple y compleja según la dificultad del caso.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar exodoncia (extracciones) por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre exodoncia (extracciones)</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="exodoncia-0"><span>¿Cuándo es realmente necesaria una extracción?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Cuando el diente no tiene estructura o soporte óseo suficiente para restaurarse, hay una infección no controlable, o una muela del juicio impactada está dañando los dientes vecinos.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="exodoncia-1"><span>¿La extracción duele?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Se realiza con anestesia local, por lo que no debieras sentir dolor durante el procedimiento; la molestia posterior se maneja con analgésicos y sigue disminuyendo día a día.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="exodoncia-2"><span>¿Qué diferencia hay entre exodoncia simple y compleja?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>La simple es de un diente visible y con raíz accesible; la compleja involucra dientes fracturados, incluidos o con raíces curvas, y puede requerir levantar un colgajo de encía.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="exodoncia-3"><span>¿Qué cuidados debo tener después?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Evitar fumar, usar bombilla/pajita o enjuagues bruscos las primeras 24 horas, aplicar frío local si hay inflamación, y seguir la dieta blanda indicada para no afectar la cicatrización.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="exodoncia-4"><span>¿Siempre hay que sacar las muelas del juicio?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>No. Si erupcionan completas, funcionales, sin caries ni enfermedad de encía y en posición sana, pueden mantenerse bajo control. Se extraen cuando están impactadas o generan daño.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="https://aaoms.org/wp-content/uploads/2024/10/Ebook_Wisdom_Teeth_R.pdf" target="_blank" rel="noopener">AAOMS — Wisdom Teeth Management, guía para pacientes (oct. 2024)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/extractions" target="_blank" rel="noopener">ADA MouthHealthy — Extractions (consultado 2025)</a></li>
+<li><a href="https://myoms.org/what-we-do/wisdom-teeth-management/wisdom-tooth-extraction-postoperative-instructions/" target="_blank" rel="noopener">myOMS (AAOMS) — Wisdom Tooth Extraction: Postoperative Instructions (consultado 2025)</a></li>
+<li><a href="https://www.ada.org/-/media/project/ada-organization/ada/ada-org/files/publications/cdt/guidetoextractions_toothandremnants_2025jan.pdf" target="_blank" rel="noopener">ADA — Guide to Extractions: Tooth and Remnants (ene. 2025)</a></li>
+<li><a href="https://diprece.minsal.cl/wp-content/uploads/2023/12/Final-RE-GPC-TDA_2023_v3.pdf" target="_blank" rel="noopener">MINSAL / DIPRECE — Guía de Práctica Clínica, Manejo del Traumatismo Dentoalveolar (resumen ejecutivo, 2023–2024)</a></li>
+</ul>
+</div>
+<div class="service-detail" id="detail-protesis">
+<h3>Coronas y prótesis</h3>
+<p class="lead">Las coronas cubren y protegen un diente muy debilitado (por ejemplo, tras una endodoncia), y las prótesis removibles (PPR) reemplazan uno o varios dientes ausentes cuando un implante no es la opción elegida. La elección de material (zirconio, disilicato, ceramage, feldespato, PPR metálica o acrílica) depende de la ubicación, presupuesto y función.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar coronas y prótesis por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre coronas y prótesis</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="protesis-0"><span>¿Qué diferencia hay entre los materiales de corona?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Varían en resistencia y estética: el zirconio y el disilicato ofrecen alta resistencia para el sector posterior; el ceramage y el feldespato priorizan estética en el sector visible. Se elige según cada caso.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="protesis-1"><span>¿La corona se puede caer o despegar?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Con el cementado adecuado es infrecuente, pero puede ocurrir con el tiempo o por trauma. Si se despega, debe recementarse pronto para proteger el diente de fracturas o filtración.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="protesis-2"><span>¿Una PPR (prótesis removible) es cómoda de usar?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Requiere un período de adaptación de días a semanas. La metálica suele ser más delgada y estable; la acrílica es más económica pero algo más voluminosa. Ambas se ajustan en boca.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="protesis-3"><span>¿Cuánto dura una corona o prótesis?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Con buena higiene y controles regulares, una corona puede durar muchos años; una PPR requiere revisión periódica porque la boca cambia con el tiempo y puede necesitar ajustes o rebases.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="protesis-4"><span>¿Necesito sacarme la PPR para dormir?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>En general sí se recomienda retirarla de noche, para descansar la encía y el hueso de soporte, y limpiarla fuera de la boca como indica tu dentista.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/crowns" target="_blank" rel="noopener">ADA MouthHealthy — Crowns (consultado 2025)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/dentures" target="_blank" rel="noopener">ADA MouthHealthy — Dentures (consultado 2025)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/dentures-partial" target="_blank" rel="noopener">ADA MouthHealthy — Dentures Partial (consultado 2025)</a></li>
+<li><a href="https://www.ada.org/resources/ada-library/oral-health-topics/dentures" target="_blank" rel="noopener">ADA — Denture Care and Maintenance, Oral Health Topics (consultado 2025)</a></li>
+<li><a href="https://www.who.int/es/news-room/fact-sheets/detail/oral-health" target="_blank" rel="noopener">OMS — Salud bucodental, prótesis y rehabilitación (actualizado 2024)</a></li>
+</ul>
+</div>
+<div class="service-detail" id="detail-blanqueamiento">
+<h3>Blanqueamiento dental</h3>
+<p class="lead">Es un procedimiento estético que aclara el color del diente mediante agentes de peróxido, aplicados en sillón bajo supervisión profesional. No repara caries ni restauraciones: es un tratamiento sobre esmalte sano, y su resultado varía según el color base de cada persona.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar blanqueamiento dental por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre blanqueamiento dental</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="blanqueamiento-0"><span>¿El blanqueamiento daña el esmalte?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Realizado por un profesional y con productos adecuados es seguro; el riesgo aumenta con productos no controlados o uso excesivo. Puede causar sensibilidad temporal, que se maneja con desensibilizantes.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="blanqueamiento-1"><span>¿El resultado es igual en todos los dientes, incluidas coronas o resinas?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>No. El blanqueamiento solo aclara el diente natural; las coronas, carillas o resinas existentes no cambian de color, por lo que pueden notarse más claras las piezas naturales y quedar un contraste que se debe planificar antes.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="blanqueamiento-2"><span>¿Cuánto dura el efecto del blanqueamiento?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Varía según hábitos (café, té, tabaco, vino) y cuidado posterior; en general el efecto se mantiene entre varios meses y más de un año, con posibilidad de retoques puntuales.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="blanqueamiento-3"><span>¿Es mejor el blanqueamiento en sillón o los productos caseros?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Los tratamientos supervisados por un profesional (en sillón o con cubetas indicadas) son más seguros y predecibles que productos genéricos de venta libre sin indicación clínica.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="blanqueamiento-4"><span>¿Cualquier persona puede blanquearse los dientes?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>No siempre: se evalúa la salud de encías y dientes antes (por ejemplo, tratar caries o sensibilidad previa), y no se recomienda en embarazo ni en menores sin indicación profesional.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="https://www.ada.org/resources/ada-library/oral-health-topics/whitening" target="_blank" rel="noopener">ADA — Whitening, Oral Health Topics (consultado 2025)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/teeth-whitening" target="_blank" rel="noopener">ADA MouthHealthy — Teeth Whitening (consultado 2025)</a></li>
+<li><a href="https://www.mouthhealthy.org/all-topics-a-z/natural-teeth-whitening" target="_blank" rel="noopener">ADA MouthHealthy — Natural Teeth Whitening, mitos y riesgos (consultado 2025)</a></li>
+<li><a href="https://adanews.ada.org/huddles/experts-weigh-in-on-teeth-whitening/" target="_blank" rel="noopener">ADA News — Experts weigh in on teeth whitening (2024)</a></li>
+<li><a href="https://www.who.int/es/news-room/fact-sheets/detail/oral-health" target="_blank" rel="noopener">OMS — Salud bucodental, uso seguro de tratamientos estéticos dentales (actualizado 2024)</a></li>
+</ul>
+</div>
+<div class="service-detail" id="detail-embarazo">
+<h3>Embarazo y odontología</h3>
+<p class="lead">El embarazo no impide la atención dental: consultas, tratamientos y radiografías (cuando están indicadas) son seguros en cualquier trimestre según las guías actuales de la ADA y la ACOG. Aquí resolvemos la duda más frecuente — "¿puedo tomarme una radiografía si estoy embarazada?" — con la guía completa descargable en PDF.</p>
+<a class="book-btn" href="https://wa.link/tu8qmu" target="_blank" rel="noopener">Agendar embarazo y odontología por WhatsApp →</a>
+<h4 class="sub">Preguntas frecuentes sobre embarazo y odontología</h4>
+<div class="mini-faq">
+<div class="faq-item">
+<button class="faq-q" data-mini="embarazo-0"><span>¿Se pueden tomar radiografías dentales durante el embarazo?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Sí, cuando están indicadas. Los equipos digitales actuales usan dosis muy bajas y dirigen el haz a la boca, no al abdomen; el riesgo es prácticamente insignificante cuando el examen está bien indicado.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="embarazo-1"><span>¿Por qué hay tantas advertencias si es seguro?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Por ética de investigación no se realizan estudios experimentales en embarazadas ni en niños, por lo que muchas fichas técnicas son conservadoras por defecto — no porque exista evidencia de daño.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="embarazo-2"><span>¿Es obligatorio el delantal de plomo?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Desde 2024 la ADA ya no lo considera necesario: los equipos digitales actuales acotan la radiación a la zona necesaria, sin exponer el abdomen.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="embarazo-3"><span>¿Qué tratamientos se priorizan según el trimestre?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>En el primer trimestre se es más conservador; el segundo trimestre es la ventana ideal para tratamientos no urgentes; en el tercero se prioriza la comodidad y la urgencia real. Lo urgente se atiende en cualquier momento.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" data-mini="embarazo-4"><span>¿Dónde puedo leer la explicación completa?</span><span class="icon">+</span></button>
+<div class="faq-a"><p>Descarga la guía completa en PDF más abajo, con la explicación detallada y las referencias de las guías clínicas internacionales.</p></div>
+</div>
+</div>
+<h4 class="sub">Referencias</h4>
+<ul class="refs">
+<li><a href="pdfs/guia_radiografias_embarazo.pdf" target="_blank" rel="noopener">📄 Descargar guía completa: Radiografías dentales durante el embarazo (PDF)</a></li>
+<li><a href="https://www.ada.org/resources/ada-library/oral-health-topics/pregnancy" target="_blank" rel="noopener">American Dental Association (ADA) — Pregnancy, Oral Health Topics (consultado 2025)</a></li>
+<li><a href="https://www.ada.org/about/press-releases/ada-releases-updated-recommendations-to-enhance-radiography-safety-in-dentistry" target="_blank" rel="noopener">ADA — Updated Recommendations to Enhance Radiography Safety in Dentistry (2024)</a></li>
+<li><a href="https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2013/08/oral-health-care-during-pregnancy-and-through-the-lifespan" target="_blank" rel="noopener">ACOG — Committee Opinion N.º 569, Oral Health Care During Pregnancy and Through the Life Span (2013, reafirmado 2017)</a></li>
+<li><a href="https://www.fdiworlddental.org/sites/default/files/2024-08/FDI%20Oral%20Health%20and%20Pregnancy%20Fact%20Sheet_0.pdf" target="_blank" rel="noopener">FDI World Dental Federation — Oral Health and Pregnancy Fact Sheet (2024)</a></li>
+</ul>
+</div>
+</div>
 </div>
 </section>
 
@@ -178,261 +540,20 @@ Dr. Nicolás Guzmán — Cirujano Dentista, Concepción · <a href="index.html">
 </footer>
 
 <script>
-const WA = "https://wa.link/tu8qmu";
+// Todo el contenido de preguntas y respuestas ya está presente en el HTML (estático,
+// indexable por buscadores). Este script solo controla el comportamiento visual del
+// acordeón (abrir/cerrar) y no genera ni inyecta contenido.
 
-const generalFaq = [
-{
-q: "¿Cómo agendo una hora?",
-a: "Puedes escribir directo por WhatsApp al +56 9 7290 2967, o reservar primero una sesión online gratuita por Meet para resolver dudas antes de decidir. No necesitas interconsulta ni derivación previa."
-},
-{
-q: "¿Cuánto cuesta la consulta y hay costos ocultos?",
-a: "La consulta y diagnóstico inicial tiene un valor fijo de $25.000. Todo presupuesto se entrega por escrito antes de iniciar cualquier tratamiento, así sabes el costo total antes de decidir."
-},
-{
-q: "¿Duele el tratamiento dental?",
-a: "La mayoría de los procedimientos se realizan con anestesia local y son indoloros durante la atención. La molestia posterior, si existe, se controla con analgésicos comunes; se te explica qué esperar antes de empezar cada tratamiento."
-},
-{
-q: "¿Qué pasa en mi primera consulta?",
-a: "Se revisa tu historial, se examina tu boca y, si es necesario, se toman radiografías. Con esa información se conversa contigo sobre el diagnóstico y las alternativas, sin presión para decidir en el momento."
-},
-{
-q: "¿Atienden urgencias el mismo día?",
-a: "Sí. El dolor agudo, los golpes y las infecciones se priorizan y se atienden con la mayor brevedad posible dentro del horario de atención (lunes a viernes 8:00–21:00, sábado 9:00–17:00)."
-},
-{
-q: "¿Qué medios de pago aceptan?",
-a: "Débito, crédito, transferencia y efectivo. Puedes consultar por planes de cuotas directamente con tu banco o tarjeta."
-},
-{
-q: "Tengo miedo al dentista, ¿qué hacen para ayudarme?",
-a: "Se explica cada paso antes de que ocurra, en lenguaje simple, y puedes pedir pausar el procedimiento en cualquier momento. La comunicación abierta reduce la ansiedad asociada a la atención dental."
-},
-{
-q: "¿Cada cuánto debo hacerme un control?",
-a: "Se recomienda un control y limpieza cada 6 meses para prevenir caries y enfermedad de las encías, incluso si no tienes molestias — la mayoría de las enfermedades bucales son prevenibles con controles regulares."
-},
-{
-q: "¿Necesito un especialista o el dentista general puede tratarme?",
-a: "Un cirujano dentista general está capacitado para realizar la gran mayoría de los tratamientos, incluida endodoncia, cirugía simple y prótesis. Solo se deriva a especialista en casos de mayor complejidad."
-},
-{
-q: "¿Qué hago si se me cae o quiebra un diente por un golpe?",
-a: "Es una urgencia: contacta de inmediato por WhatsApp. Si es un diente permanente completo, consérvalo en leche o saliva (nunca seco) y acude lo antes posible — el tiempo es clave para poder reimplantarlo con éxito."
-}
-];
-
-const services = [
-{
-id: "consulta",
-title: "Consulta y urgencias",
-lead: "La consulta inicial incluye examen clínico, diagnóstico y, si corresponde, radiografías. Las urgencias (dolor agudo, trepanación, infecciones) se priorizan y se atienden lo antes posible dentro del horario de atención — no necesitas esperar semanas para ser visto cuando duele.",
-faqs: [
-{ q: "¿Qué incluye la consulta de $25.000?", a: "Examen clínico completo, diagnóstico y un plan de tratamiento explicado y presupuestado por escrito antes de decidir cualquier procedimiento." },
-{ q: "¿Puedo llegar sin cita por una urgencia?", a: "Lo ideal es escribir primero por WhatsApp para coordinar el horario más cercano disponible; las urgencias se priorizan sobre atenciones programadas." },
-{ q: "¿Qué es una trepanación de urgencia?", a: "Es un procedimiento para aliviar el dolor agudo de un diente con inflamación o infección del nervio, abriendo el diente para drenar la presión mientras se define el tratamiento definitivo." },
-{ q: "¿Necesito radiografías en la primera visita?", a: "Solo si el diagnóstico lo requiere. Se te explica por qué son necesarias antes de tomarlas, no son un cobro automático." },
-{ q: "¿Qué pasa si mi problema requiere un especialista?", a: "Se te deriva de forma transparente, explicando por qué, y se coordina el seguimiento para que no pierdas continuidad en tu tratamiento." }
-],
-refs: [
-{ t: "OMS — Salud bucodental (ficha descriptiva, actualizada 2024)", u: "https://www.who.int/es/news-room/fact-sheets/detail/oral-health" },
-{ t: "OMS — Declaración de Bangkok: No Health Without Oral Health (nov. 2024)", u: "https://www.who.int/news/item/25-11-2024-the-first-ever-global-oral-health-conference-highlights-universal-health-coverage-by-2030" },
-{ t: "ADA MouthHealthy — Common Questions About Going to the Dentist (consultado 2025)", u: "https://www.mouthhealthy.org/dental-care/questions-about-going-to-the-dentist" },
-{ t: "MINSAL / DIPRECE — Programa de Salud Bucal, información al profesional (vigente, consultado 2025)", u: "https://diprece.minsal.cl/programas-de-salud/salud-bucal/informacion-al-profesional-salud-bucal/" },
-{ t: "Colegio de Cirujanas y Cirujanos Dentistas de Chile A.G. (consultado 2025)", u: "https://www.colegiodentistas.cl/" }
-]
-},
-{
-id: "prevencion",
-title: "Destartraje y profilaxis",
-lead: "Es la limpieza profesional que remueve el sarro (placa bacteriana calcificada) que el cepillado no elimina, principalmente bajo el borde de la encía. Es la base de la prevención: sin ella, la inflamación de encías puede avanzar hacia enfermedad periodontal y pérdida ósea.",
-faqs: [
-{ q: "¿El destartraje daña el esmalte?", a: "No. El instrumental profesional remueve solo el sarro adherido, sin afectar el esmalte sano. Puede generar sensibilidad temporal en dientes con encías retraídas." },
-{ q: "¿Por qué me sangran las encías al limpiarme?", a: "El sangrado indica gingivitis (inflamación por placa bacteriana), no que el destartraje sea agresivo. Con limpieza profesional e higiene diaria, el sangrado disminuye en pocas semanas." },
-{ q: "¿Cada cuánto debo hacerme profilaxis?", a: "Cada 6 meses en general; con más frecuencia si tienes antecedentes de enfermedad periodontal, eres fumador o tienes diabetes, condiciones que aumentan el riesgo." },
-{ q: "¿Es lo mismo destartraje que blanqueamiento?", a: "No. El destartraje remueve sarro y placa (salud), el blanqueamiento aclara el color del diente (estética). Muchas veces la limpieza ya mejora el aspecto al remover manchas superficiales." },
-{ q: "¿Qué pasa si nunca me hago destartraje?", a: "El sarro acumulado favorece la inflamación crónica de la encía, que puede progresar a periodontitis: pérdida de hueso y, eventualmente, movilidad o pérdida de dientes." }
-],
-refs: [
-{ t: "OMS — Salud bucodental, prevención de enfermedad periodontal (actualizado 2024)", u: "https://www.who.int/es/news-room/fact-sheets/detail/oral-health" },
-{ t: "PMC — \"Gingivitis: The Past, the Present, the Future\" (2025)", u: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12517237/" },
-{ t: "MINSAL / DIPRECE — Guía de prevención, diagnóstico y tratamiento de enfermedad periodontal (vigente, consultado 2025)", u: "https://diprece.minsal.cl/temas-de-salud/orden-alfabetico/guias-clinicas-no-ges/guias-clinicas-no-ges-salud-bucal/salud-oral-en-adolescentes-de-10-19-anos-prevencion-diagnostico-y-tratamiento-de-la-enfermedad-periodontal/" },
-{ t: "ADA MouthHealthy — Gum Disease (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/gum-disease" },
-{ t: "OMS — Global Oral Health Action Plan 2023–2030, objetivo de prevención periodontal (vigente 2024–2025)", u: "https://cdn.who.int/media/docs/default-source/ncds/mnd/oral-health/eb152-draft-global-oral-health-action-plan-2023-2030-en.pdf" }
-]
-},
-{
-id: "resinas",
-title: "Resinas (restauraciones)",
-lead: "Las resinas son \"tapaduras\" del color del diente que reparan caries o fracturas pequeñas a moderadas. A diferencia de las antiguas amalgamas metálicas, se adhieren al diente y son estéticas; el tipo (simple, compuesta o reforzada con fibras) depende del tamaño y ubicación del daño.",
-faqs: [
-{ q: "¿La resina dura para siempre?", a: "No, tiene una vida útil (en general varios años) que depende de la higiene, el bruxismo y la ubicación. Se revisa en cada control para detectar desgaste o filtración a tiempo." },
-{ q: "¿Duele hacerse una resina?", a: "Se realiza con anestesia local; durante el procedimiento no debieras sentir dolor. Puede haber sensibilidad leve al frío/calor por algunos días, especialmente en caries profundas." },
-{ q: "¿Qué diferencia hay entre resina simple y compuesta?", a: "La resina simple cubre un daño acotado en una cara del diente; la compuesta abarca más superficies o mayor profundidad, por lo que requiere más tiempo clínico y material." },
-{ q: "¿Cuándo se necesita una resina reforzada con fibras o una incrustación en vez de resina normal?", a: "Cuando el diente perdió gran parte de su estructura: ahí la resina simple no da suficiente resistencia y se necesita más refuerzo o una restauración indirecta (incrustación) para evitar que el diente se fracture." },
-{ q: "¿Puedo comer normal después de una resina?", a: "Sí, la resina endurece con luz en el momento (a diferencia de la amalgama antigua) y puedes comer apenas pase el efecto de la anestesia, evitando alimentos muy duros el primer día si hubo anestesia profunda." }
-],
-refs: [
-{ t: "ADA MouthHealthy — Composite Fillings (actualizado agosto 2024)", u: "https://www.mouthhealthy.org/all-topics-a-z/composite-fillings" },
-{ t: "ADA MouthHealthy — Dental Filling Options (actualizado agosto 2024)", u: "https://www.mouthhealthy.org/all-topics-a-z/dental-filling-options" },
-{ t: "ADA — Materials for Direct Restorations, Oral Health Topics (consultado 2025)", u: "https://www.ada.org/resources/ada-library/oral-health-topics/materials-for-direct-restorations" },
-{ t: "PMC — \"Natural Silica and Plant-Derived Fillers for Dental Composite Resins: A Narrative Review\" (2025)", u: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12611795/" },
-{ t: "ADA MouthHealthy — Fillings (Tooth-Colored) (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/fillings-tooth-colored/" }
-]
-},
-{
-id: "endodoncia",
-title: "Endodoncia (tratamiento de conducto)",
-lead: "Es el tratamiento del nervio (pulpa) cuando está dañado o infectado por caries profunda, trauma o grietas. Se limpia y sella el interior del diente para eliminar el dolor y la infección, conservando el diente en boca en vez de extraerlo.",
-faqs: [
-{ q: "¿Perderé mi diente si me hago una endodoncia?", a: "No: la endodoncia existe precisamente para salvar el diente evitando su extracción. El diente queda sin nervio pero funcional; con una restauración adecuada (resina o corona) puede durar muchos años." },
-{ q: "¿Es muy doloroso el tratamiento?", a: "Es uno de los mitos más comunes. Con anestesia adecuada el procedimiento en sí no duele; de hecho, la endodoncia elimina el dolor que causaba la infección o inflamación del nervio." },
-{ q: "¿Cuántas sesiones se necesitan?", a: "Depende de la complejidad: dientes con conductos simples (premolares) suelen resolverse en 1–2 sesiones; molares con conductos más complejos pueden requerir 2 o más." },
-{ q: "¿El diente tratado necesita corona después?", a: "En molares y premolares muy debilitados, sí se recomienda una corona para protegerlo de fracturas, ya que el diente pierde parte de su resistencia natural al perder el nervio y estructura." },
-{ q: "¿Qué pasa si no me trato un diente con el nervio dañado?", a: "La infección puede progresar, formar un absceso, causar dolor agudo y comprometer el hueso alrededor de la raíz, llegando a requerir la extracción del diente." }
-],
-refs: [
-{ t: "Sociedad de Endodoncia de Chile — Preguntas frecuentes sobre endodoncia (consultado 2025)", u: "https://www.socendochile.cl/faqs.php" },
-{ t: "Servicio de Salud Tarapacá / MINSAL — Protocolo de Endodoncia (res. 2025)", u: "https://www.saludtarapaca.gob.cl/wp-content/uploads/2025/11/PROTOCOLO-ENDODONCIA.pdf" },
-{ t: "American Association of Endodontists (AAE) — Root Canal Treatment, información para pacientes (consultado 2025)", u: "https://www.aae.org/patients/root-canal-treatment/" },
-{ t: "ADA MouthHealthy — Endodontics / Root Canals (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z" },
-{ t: "RedSalud — Endodoncia: todo lo que debes saber sobre el tratamiento de conducto (consultado 2025)", u: "https://www.redsalud.cl/blog/salud-dental/endodoncia-cuando-es-necesario-un-tratamiento-de-conducto" }
-]
-},
-{
-id: "exodoncia",
-title: "Exodoncia (extracciones)",
-lead: "Es la extracción de un diente que no puede conservarse (por daño extenso, infección, fractura o indicación ortodóncica) o de un tercer molar (\"muela del juicio\") mal posicionado. Se distingue entre exodoncia simple y compleja según la dificultad del caso.",
-faqs: [
-{ q: "¿Cuándo es realmente necesaria una extracción?", a: "Cuando el diente no tiene estructura o soporte óseo suficiente para restaurarse, hay una infección no controlable, o una muela del juicio impactada está dañando los dientes vecinos." },
-{ q: "¿La extracción duele?", a: "Se realiza con anestesia local, por lo que no debieras sentir dolor durante el procedimiento; la molestia posterior se maneja con analgésicos y sigue disminuyendo día a día." },
-{ q: "¿Qué diferencia hay entre exodoncia simple y compleja?", a: "La simple es de un diente visible y con raíz accesible; la compleja involucra dientes fracturados, incluidos o con raíces curvas, y puede requerir levantar un colgajo de encía." },
-{ q: "¿Qué cuidados debo tener después?", a: "Evitar fumar, usar bombilla/pajita o enjuagues bruscos las primeras 24 horas, aplicar frío local si hay inflamación, y seguir la dieta blanda indicada para no afectar la cicatrización." },
-{ q: "¿Siempre hay que sacar las muelas del juicio?", a: "No. Si erupcionan completas, funcionales, sin caries ni enfermedad de encía y en posición sana, pueden mantenerse bajo control. Se extraen cuando están impactadas o generan daño." }
-],
-refs: [
-{ t: "AAOMS — Wisdom Teeth Management, guía para pacientes (oct. 2024)", u: "https://aaoms.org/wp-content/uploads/2024/10/Ebook_Wisdom_Teeth_R.pdf" },
-{ t: "ADA MouthHealthy — Extractions (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/extractions" },
-{ t: "myOMS (AAOMS) — Wisdom Tooth Extraction: Postoperative Instructions (consultado 2025)", u: "https://myoms.org/what-we-do/wisdom-teeth-management/wisdom-tooth-extraction-postoperative-instructions/" },
-{ t: "ADA — Guide to Extractions: Tooth and Remnants (ene. 2025)", u: "https://www.ada.org/-/media/project/ada-organization/ada/ada-org/files/publications/cdt/guidetoextractions_toothandremnants_2025jan.pdf" },
-{ t: "MINSAL / DIPRECE — Guía de Práctica Clínica, Manejo del Traumatismo Dentoalveolar (resumen ejecutivo, 2023–2024)", u: "https://diprece.minsal.cl/wp-content/uploads/2023/12/Final-RE-GPC-TDA_2023_v3.pdf" }
-]
-},
-{
-id: "protesis",
-title: "Coronas y prótesis",
-lead: "Las coronas cubren y protegen un diente muy debilitado (por ejemplo, tras una endodoncia), y las prótesis removibles (PPR) reemplazan uno o varios dientes ausentes cuando un implante no es la opción elegida. La elección de material (zirconio, disilicato, ceramage, feldespato, PPR metálica o acrílica) depende de la ubicación, presupuesto y función.",
-faqs: [
-{ q: "¿Qué diferencia hay entre los materiales de corona?", a: "Varían en resistencia y estética: el zirconio y el disilicato ofrecen alta resistencia para el sector posterior; el ceramage y el feldespato priorizan estética en el sector visible. Se elige según cada caso." },
-{ q: "¿La corona se puede caer o despegar?", a: "Con el cementado adecuado es infrecuente, pero puede ocurrir con el tiempo o por trauma. Si se despega, debe recementarse pronto para proteger el diente de fracturas o filtración." },
-{ q: "¿Una PPR (prótesis removible) es cómoda de usar?", a: "Requiere un período de adaptación de días a semanas. La metálica suele ser más delgada y estable; la acrílica es más económica pero algo más voluminosa. Ambas se ajustan en boca." },
-{ q: "¿Cuánto dura una corona o prótesis?", a: "Con buena higiene y controles regulares, una corona puede durar muchos años; una PPR requiere revisión periódica porque la boca cambia con el tiempo y puede necesitar ajustes o rebases." },
-{ q: "¿Necesito sacarme la PPR para dormir?", a: "En general sí se recomienda retirarla de noche, para descansar la encía y el hueso de soporte, y limpiarla fuera de la boca como indica tu dentista." }
-],
-refs: [
-{ t: "ADA MouthHealthy — Crowns (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/crowns" },
-{ t: "ADA MouthHealthy — Dentures (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/dentures" },
-{ t: "ADA MouthHealthy — Dentures Partial (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/dentures-partial" },
-{ t: "ADA — Denture Care and Maintenance, Oral Health Topics (consultado 2025)", u: "https://www.ada.org/resources/ada-library/oral-health-topics/dentures" },
-{ t: "OMS — Salud bucodental, prótesis y rehabilitación (actualizado 2024)", u: "https://www.who.int/es/news-room/fact-sheets/detail/oral-health" }
-]
-},
-{
-id: "blanqueamiento",
-title: "Blanqueamiento dental",
-lead: "Es un procedimiento estético que aclara el color del diente mediante agentes de peróxido, aplicados en sillón bajo supervisión profesional. No repara caries ni restauraciones: es un tratamiento sobre esmalte sano, y su resultado varía según el color base de cada persona.",
-faqs: [
-{ q: "¿El blanqueamiento daña el esmalte?", a: "Realizado por un profesional y con productos adecuados es seguro; el riesgo aumenta con productos no controlados o uso excesivo. Puede causar sensibilidad temporal, que se maneja con desensibilizantes." },
-{ q: "¿El resultado es igual en todos los dientes, incluidas coronas o resinas?", a: "No. El blanqueamiento solo aclara el diente natural; las coronas, carillas o resinas existentes no cambian de color, por lo que pueden notarse más claras las piezas naturales y quedar un contraste que se debe planificar antes." },
-{ q: "¿Cuánto dura el efecto del blanqueamiento?", a: "Varía según hábitos (café, té, tabaco, vino) y cuidado posterior; en general el efecto se mantiene entre varios meses y más de un año, con posibilidad de retoques puntuales." },
-{ q: "¿Es mejor el blanqueamiento en sillón o los productos caseros?", a: "Los tratamientos supervisados por un profesional (en sillón o con cubetas indicadas) son más seguros y predecibles que productos genéricos de venta libre sin indicación clínica." },
-{ q: "¿Cualquier persona puede blanquearse los dientes?", a: "No siempre: se evalúa la salud de encías y dientes antes (por ejemplo, tratar caries o sensibilidad previa), y no se recomienda en embarazo ni en menores sin indicación profesional." }
-],
-refs: [
-{ t: "ADA — Whitening, Oral Health Topics (consultado 2025)", u: "https://www.ada.org/resources/ada-library/oral-health-topics/whitening" },
-{ t: "ADA MouthHealthy — Teeth Whitening (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/teeth-whitening" },
-{ t: "ADA MouthHealthy — Natural Teeth Whitening, mitos y riesgos (consultado 2025)", u: "https://www.mouthhealthy.org/all-topics-a-z/natural-teeth-whitening" },
-{ t: "ADA News — Experts weigh in on teeth whitening (2024)", u: "https://adanews.ada.org/huddles/experts-weigh-in-on-teeth-whitening/" },
-{ t: "OMS — Salud bucodental, uso seguro de tratamientos estéticos dentales (actualizado 2024)", u: "https://www.who.int/es/news-room/fact-sheets/detail/oral-health" }
-]
-},
-{
-id: "embarazo",
-title: "Embarazo y odontología",
-lead: "El embarazo no impide la atención dental: consultas, tratamientos y radiografías (cuando están indicadas) son seguros en cualquier trimestre según las guías actuales de la ADA y la ACOG. Aquí resolvemos la duda más frecuente — \"¿puedo tomarme una radiografía si estoy embarazada?\" — con la guía completa descargable en PDF.",
-faqs: [
-{ q: "¿Se pueden tomar radiografías dentales durante el embarazo?", a: "Sí, cuando están indicadas. Los equipos digitales actuales usan dosis muy bajas y dirigen el haz a la boca, no al abdomen; el riesgo es prácticamente insignificante cuando el examen está bien indicado." },
-{ q: "¿Por qué hay tantas advertencias si es seguro?", a: "Por ética de investigación no se realizan estudios experimentales en embarazadas ni en niños, por lo que muchas fichas técnicas son conservadoras por defecto — no porque exista evidencia de daño." },
-{ q: "¿Es obligatorio el delantal de plomo?", a: "Desde 2024 la ADA ya no lo considera necesario: los equipos digitales actuales acotan la radiación a la zona necesaria, sin exponer el abdomen." },
-{ q: "¿Qué tratamientos se priorizan según el trimestre?", a: "En el primer trimestre se es más conservador; el segundo trimestre es la ventana ideal para tratamientos no urgentes; en el tercero se prioriza la comodidad y la urgencia real. Lo urgente se atiende en cualquier momento." },
-{ q: "¿Dónde puedo leer la explicación completa?", a: "Descarga la guía completa en PDF más abajo, con la explicación detallada y las referencias de las guías clínicas internacionales." }
-],
-refs: [
-{ t: "📄 Descargar guía completa: Radiografías dentales durante el embarazo (PDF)", u: "pdfs/guia_radiografias_embarazo.pdf" },
-{ t: "American Dental Association (ADA) — Pregnancy, Oral Health Topics (consultado 2025)", u: "https://www.ada.org/resources/ada-library/oral-health-topics/pregnancy" },
-{ t: "ADA — Updated Recommendations to Enhance Radiography Safety in Dentistry (2024)", u: "https://www.ada.org/about/press-releases/ada-releases-updated-recommendations-to-enhance-radiography-safety-in-dentistry" },
-{ t: "ACOG — Committee Opinion N.º 569, Oral Health Care During Pregnancy and Through the Life Span (2013, reafirmado 2017)", u: "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2013/08/oral-health-care-during-pregnancy-and-through-the-lifespan" },
-{ t: "FDI World Dental Federation — Oral Health and Pregnancy Fact Sheet (2024)", u: "https://www.fdiworlddental.org/sites/default/files/2024-08/FDI%20Oral%20Health%20and%20Pregnancy%20Fact%20Sheet_0.pdf" }
-]
-}
-];
-
-function buildGeneralFaq() {
-const wrap = document.getElementById("general-faq-list");
-generalFaq.forEach((item, i) => {
-const el = document.createElement("div");
-el.className = "faq-item";
-el.innerHTML = `
-<button class="faq-q" data-idx="${i}">
-<span>${item.q}</span><span class="icon">+</span>
-</button>
-<div class="faq-a"><p>${item.a}</p></div>
-`;
-wrap.appendChild(el);
-});
-wrap.querySelectorAll(".faq-q").forEach(btn => {
+document.querySelectorAll("#general-faq-list .faq-q").forEach(btn => {
 btn.addEventListener("click", () => {
 btn.closest(".faq-item").classList.toggle("open");
 });
 });
-}
 
-function buildServices() {
-const btnWrap = document.getElementById("service-buttons");
-const detailWrap = document.getElementById("service-details");
+const serviceButtonsWrap = document.getElementById("service-buttons");
+const serviceDetailsWrap = document.getElementById("service-details");
 
-services.forEach(svc => {
-const btn = document.createElement("button");
-btn.className = "service-btn";
-btn.dataset.target = svc.id;
-btn.innerHTML = `<span>${svc.title}</span><span class="arrow">›</span>`;
-btnWrap.appendChild(btn);
-
-const refsHtml = svc.refs.map(r => `<li><a href="${r.u}" target="_blank" rel="noopener">${r.t}</a></li>`).join("");
-const faqsHtml = svc.faqs.map((f, i) => `
-<div class="faq-item">
-<button class="faq-q" data-mini="${svc.id}-${i}"><span>${f.q}</span><span class="icon">+</span></button>
-<div class="faq-a"><p>${f.a}</p></div>
-</div>
-`).join("");
-
-const detail = document.createElement("div");
-detail.className = "service-detail";
-detail.id = "detail-" + svc.id;
-detail.innerHTML = `
-<h3>${svc.title}</h3>
-<p class="lead">${svc.lead}</p>
-<a class="book-btn" href="${WA}" target="_blank" rel="noopener">Agendar ${svc.title.toLowerCase()} por WhatsApp →</a>
-<h4 class="sub">Preguntas frecuentes sobre ${svc.title.toLowerCase()}</h4>
-<div class="mini-faq">${faqsHtml}</div>
-<h4 class="sub">Referencias</h4>
-<ul class="refs">${refsHtml}</ul>
-`;
-detailWrap.appendChild(detail);
-});
-
-btnWrap.querySelectorAll(".service-btn").forEach(btn => {
+serviceButtonsWrap.querySelectorAll(".service-btn").forEach(btn => {
 btn.addEventListener("click", () => {
 const id = btn.dataset.target;
 const detail = document.getElementById("detail-" + id);
@@ -449,14 +570,10 @@ detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 });
 
-detailWrap.addEventListener("click", (e) => {
+serviceDetailsWrap.addEventListener("click", (e) => {
 const q = e.target.closest(".faq-q");
 if (q) q.closest(".faq-item").classList.toggle("open");
 });
-}
-
-buildGeneralFaq();
-buildServices();
 </script>
 </body>
 </html>
